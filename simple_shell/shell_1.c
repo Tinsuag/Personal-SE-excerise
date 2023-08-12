@@ -1,12 +1,12 @@
 #include "main.h"
 
 int main(int ac, char **argv){
-    char *prompt = "(Eshell) $ ";
+    char *prompt = "#cisfun$ ";
     char *lineptr = NULL, *lineptr_copy = NULL;
     size_t n = 0;
     ssize_t nchars_read;
     const char *delim = " \n";
-    int num_tokens = 0, counter = 0;
+    int num_tokens = 0;
     char *token;
     int i;
 
@@ -55,20 +55,16 @@ int main(int ac, char **argv){
             token = strtok(NULL, delim);
         }
         argv[i] = NULL;
-		for (counter = 0; counter < num_tokens - 1; counter++)
-		{
-			printf("%s	", argv[counter]);
-		}
 
+        /* execute the command */
+        execmd(argv);
 
-        printf("%d\n", num_tokens);
-		num_tokens = 0;
-        /* free up allocated memory */ 
-        free(lineptr);
-		free(lineptr_copy);
-		free(argv);
     } 
 
+
+    /* free up allocated memory */ 
+    free(lineptr_copy);
+    free(lineptr);
 
     return (0);
 }

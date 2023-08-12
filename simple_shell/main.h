@@ -7,6 +7,8 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <stddef.h>
 #include <unistd.h>
 
+void execmd(char **argv);
 #endif /*MAIN_H*/ 
